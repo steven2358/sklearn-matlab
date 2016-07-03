@@ -1,2 +1,4 @@
-# sklearn-matlab
-Machine learning in Matlab with scikit-learn syntaxis
+sklearn-matlab
+===
+
+Machine learning in Matlab using scikit-learn syntaxis
