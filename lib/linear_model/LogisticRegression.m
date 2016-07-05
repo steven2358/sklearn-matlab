@@ -18,6 +18,7 @@ classdef LogisticRegression < handle
         end
         
         function fit(obj,X,Y)
+            % initialize as regression solution
             lambda = obj.reg;
             w = (X'*X+lambda*eye(size(X,2)))\X'*Y;
             
@@ -26,7 +27,7 @@ classdef LogisticRegression < handle
                 'Display', 'off');
             [w, J, exit_flag] = ...
                 fminunc(@(t)(log_cost_function_reg(t, X, Y, lambda)),...
-                w, options); %#ok<ASGLU,NASGU>
+                w, options); %#ok<ASGLU>
             
             obj.coef_ = w(:);
         end
