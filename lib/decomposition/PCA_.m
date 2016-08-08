@@ -1,8 +1,14 @@
 classdef PCA_ < handle
+    % Principal component analysis (PCA).
     
-    properties
-        n_components = 2;
-        components;
+    properties (GetAccess = 'public', SetAccess = 'public')
+        % parameters
+        n_components = 2; % Number of components to keep.
+    end
+    
+    properties (GetAccess = 'public', SetAccess = 'private')
+        % attributes
+        components; % Principal axes in feature space.
     end
     
     methods
@@ -17,15 +23,18 @@ classdef PCA_ < handle
             end
         end
         
+        % Fit the model with X.
         function fit(obj,X)
             coeff = pca(X);
             obj.components = coeff(:,1:obj.n_components);
         end
         
+        % Apply the dimensionality reduction on X.
         function X_new = transform(obj,X)
             X_new = X*obj.components;
         end
         
+        % Fit the model with X and apply the dimensionality reduction on X.
         function X_new = fit_transform(obj,X)
             obj.fit(X);
             X_new = obj.transform(X);
