@@ -1,11 +1,14 @@
 classdef Ridge < handle
-    %RIDGE Summary of this class goes here
-    %   Detailed explanation goes here
+    % Linear least squares with L2 regularization.
     
-    properties
-        alpha = 1E-2; % regularization
-        
-        coef_
+    properties (GetAccess = 'public', SetAccess = 'public')
+        % parameters
+        alpha = 1E2; % Regularization. Corresponds to C^-1.
+    end
+    
+    properties (GetAccess = 'public', SetAccess = 'private')
+        % attributes
+        coef_; % Weight vectors
     end
     
     methods
@@ -20,15 +23,16 @@ classdef Ridge < handle
             end
         end
         
+        % Fit Ridge regression model
         function fit(obj,X,y)
-            lambda = obj.alpha;
+            lambda = 1/obj.alpha;
             w = (X'*X+lambda*eye(size(X,2)))\X'*y;
             
             obj.coef_ = w(:);
         end
         
-        function y_pred = predict(obj,X)
-            y_pred = X*obj.coef_;
+        function C = predict(obj,X)
+            C = X*obj.coef_;
         end
         
         function R2 = score(obj,X,y)
