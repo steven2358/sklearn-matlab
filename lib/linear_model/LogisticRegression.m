@@ -17,7 +17,7 @@ classdef LogisticRegression < handle
             end
         end
         
-        function fit(obj,X,Y)
+        function fit(obj,X,Y,~)
             % initialize as regression solution
             lambda = obj.reg;
             w = (X'*X+lambda*eye(size(X,2)))\X'*Y;
@@ -32,8 +32,8 @@ classdef LogisticRegression < handle
             obj.coef_ = w(:);
         end
         
-        function proba = predict_proba(obj,X)
+        function proba = predict_proba(obj,X,~)
             proba = 1 ./ (1 + exp(-X*obj.coef_)); % sigmoid
         end
-    end    
+    end
 end

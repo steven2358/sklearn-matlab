@@ -24,9 +24,8 @@ classdef PCA_ < handle
         end
         
         % Fit the model with X.
-        function fit(obj,X)
-            coeff = pca(X);
-            obj.components = coeff(:,1:obj.n_components);
+        function fit(obj,X,~)
+            obj.components = pca(X,'NumComponents',obj.n_components);
         end
         
         % Apply the dimensionality reduction on X.
@@ -35,7 +34,7 @@ classdef PCA_ < handle
         end
         
         % Fit the model with X and apply the dimensionality reduction on X.
-        function X_new = fit_transform(obj,X)
+        function X_new = fit_transform(obj,X,~)
             obj.fit(X);
             X_new = obj.transform(X);
         end

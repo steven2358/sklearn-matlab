@@ -35,7 +35,7 @@ classdef Pipeline < handle
         function fit(obj,X,Y)
             X_fit = X;
             for i=1:obj.num_steps-1
-                X_fit = obj.named_steps{i}.estimator.fit_transform(X_fit);
+                X_fit = obj.named_steps{i}.estimator.fit_transform(X_fit,Y);
             end
             obj.named_steps{end}.estimator.fit(X_fit,Y);
         end

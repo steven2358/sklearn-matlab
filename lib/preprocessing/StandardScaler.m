@@ -28,7 +28,7 @@ classdef StandardScaler < handle
         end
         
         % Compute the mean and std to be used for later scaling.
-        function fit(obj,X)
+        function fit(obj,X,~)
             if obj.with_mean
                 obj.mean_ = mean(X,1);
             end
@@ -50,7 +50,7 @@ classdef StandardScaler < handle
         end
         
         % Fit to data, then transform it.
-        function X_new = fit_transform(obj,X)
+        function X_new = fit_transform(obj,X,~)
             obj.fit(X);
             X_new = obj.transform(X);
         end
