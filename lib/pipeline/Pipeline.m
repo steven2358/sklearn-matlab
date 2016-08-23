@@ -46,7 +46,7 @@ classdef Pipeline < handle
         function proba = predict_proba(obj,X)
             X_fit = X;
             for i=1:obj.num_steps-1
-                X_fit = obj.named_steps{i}.estimator.fit_transform(X_fit);
+                X_fit = obj.named_steps{i}.estimator.transform(X_fit);
             end
             proba = obj.named_steps{end}.estimator.predict_proba(X_fit);
         end        
