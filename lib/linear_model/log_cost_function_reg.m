@@ -10,7 +10,7 @@ m = length(y); % number of training examples
 
 % Compute the cost of a particular choice of theta.
 
-h = sigmoid(X*theta);
+h = 1 ./ (1 + exp(-X*theta)); % sigmoid of X*theta
 
 theta_reg = theta;
 theta_reg(1) = 0; % exclude theta(1) from regularization
