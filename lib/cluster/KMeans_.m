@@ -11,7 +11,7 @@ classdef KMeans_ < handle
         n_init = 10; % Number of time the k-means algorithm will be run
         % with different centroid seeds. The final results will be the best
         % output of n_init consecutive runs in terms of inertia.
-        n_jobs = 1;
+        n_jobs = 1; % The number of jobs to use for the computation.
     end
     
     properties (GetAccess = 'public', SetAccess = 'private')
@@ -32,6 +32,7 @@ classdef KMeans_ < handle
             end
         end
         
+        % Compute k-means clustering.
         function fit(obj,X, ~)
             stream = RandStream('mlfg6331_64');  % Random number stream
             opts = statset('UseParallel',true,...
@@ -49,11 +50,14 @@ classdef KMeans_ < handle
             obj.labels_ = idx;
         end
         
+        % Compute cluster centers and predict cluster index for each
+        % sample.
         function labels = fit_predict(obj,X, ~)
             obj.fit(X);
             labels = obj.predict(X);
         end
         
+        % Compute clustering and transform X to cluster-distance space.
         function X_new = fit_transform(obj,X,~)
             obj.fit(X);
             X_new = obj.transform(X);
