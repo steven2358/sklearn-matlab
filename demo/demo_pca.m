@@ -6,7 +6,7 @@ clear
 [X_train, X_test, y_train, y_test] = sklearn_data_2clusters();
 
 clf = PCA_(struct('n_components',1));
-clf.fit(X_train+10);
+clf.fit(X_train);
 v = clf.components;
 
 f1 = figure; hold all
