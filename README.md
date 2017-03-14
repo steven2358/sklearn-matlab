@@ -1,4 +1,4 @@
 sklearn-matlab
 ===
 
-Machine learning in Matlab using scikit-learn syntax
+Machine learning in Matlab using scikit-learn syntax.
