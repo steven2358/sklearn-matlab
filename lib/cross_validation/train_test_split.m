@@ -20,5 +20,5 @@ ind_test = indp(n_train+1:n);
 
 X_train = X(ind_train,:);
 X_test = X(ind_test,:);
-y_train = y(ind_train);
-y_test = y(ind_test);
+y_train = y(ind_train,:);
+y_test = y(ind_test,:);
