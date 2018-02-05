@@ -1,4 +1,4 @@
-classdef StandardScaler < handle
+classdef StandardScaler < BaseEstimator
     % Standardize features by removing the mean and scaling to unit
     % variance.
     
@@ -17,13 +17,9 @@ classdef StandardScaler < handle
     
     methods
         % constructor
-        function obj = StandardScaler(parameters)
-            if (nargin > 0) % copy valid parameters
-                for fn = fieldnames(parameters)',
-                    if ismember(fn,fieldnames(obj)),
-                        obj.(fn{1}) = parameters.(fn{1});
-                    end
-                end
+        function obj = StandardScaler(params)
+            if nargin>0
+                obj.set_params(params)
             end
         end
         

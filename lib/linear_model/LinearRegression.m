@@ -1,4 +1,4 @@
-classdef LinearRegression < handle
+classdef LinearRegression < BaseEstimator
     % Ordinary least squares Linear Regression.
     
     properties (GetAccess = 'public', SetAccess = 'public')
@@ -13,13 +13,9 @@ classdef LinearRegression < handle
     
     methods
         % constructor
-        function obj = LinearRegression(parameters)
-            if (nargin > 0) % copy valid parameters
-                for fn = fieldnames(parameters)',
-                    if ismember(fn,fieldnames(obj)),
-                        obj.(fn{1}) = parameters.(fn{1});
-                    end
-                end
+        function obj = LinearRegression(params)
+            if nargin>0
+                obj.set_params(params)
             end
         end
         

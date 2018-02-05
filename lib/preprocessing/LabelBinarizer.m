@@ -1,5 +1,7 @@
-classdef LabelBinarizer < handle
+classdef LabelBinarizer < BaseEstimator
     % Binarize labels in a one-vs-all fashion.
+    %
+    % https://github.com/steven2358/sklearn-matlab
     
     properties (GetAccess = 'public', SetAccess = 'public')
         % parameters
@@ -14,13 +16,9 @@ classdef LabelBinarizer < handle
     
     methods
         % constructor
-        function obj = LabelBinarizer(parameters)
-            if (nargin > 0) % copy valid parameters
-                for fn = fieldnames(parameters)',
-                    if ismember(fn,fieldnames(obj)),
-                        obj.(fn{1}) = parameters.(fn{1});
-                    end
-                end
+        function obj = LabelBinarizer(params)
+            if nargin>0
+                obj.set_params(params)
             end
         end
         

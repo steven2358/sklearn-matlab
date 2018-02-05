@@ -1,4 +1,4 @@
-classdef MinMaxScaler < handle
+classdef MinMaxScaler < BaseEstimator
     % Transforms features by scaling each feature to a given range.
     %
     % This estimator scales and translates each feature individually such
@@ -19,13 +19,9 @@ classdef MinMaxScaler < handle
     
     methods
         % constructor
-        function obj = MinMaxScaler(parameters)
-            if (nargin > 0) % copy valid parameters
-                for fn = fieldnames(parameters)',
-                    if ismember(fn,fieldnames(obj)),
-                        obj.(fn{1}) = parameters.(fn{1});
-                    end
-                end
+        function obj = MinMaxScaler(params)
+            if nargin>0
+                obj.set_params(params)
             end
         end
         

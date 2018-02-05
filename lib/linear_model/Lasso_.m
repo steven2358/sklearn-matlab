@@ -1,4 +1,4 @@
-classdef Lasso_ < handle
+classdef Lasso_ < BaseEstimator
     % Linear Model trained with L1 prior as regularizer.
     %
     % Requires the statistics toolbox
@@ -16,13 +16,9 @@ classdef Lasso_ < handle
     
     methods
         % constructor
-        function obj = Lasso_(parameters)
-            if (nargin > 0) % copy valid parameters
-                for fn = fieldnames(parameters)',
-                    if ismember(fn,fieldnames(obj)),
-                        obj.(fn{1}) = parameters.(fn{1});
-                    end
-                end
+        function obj = Lasso_(params)
+            if nargin>0
+                obj.set_params(params)
             end
         end
         

@@ -1,4 +1,4 @@
-classdef PCA_ < handle
+classdef PCA_ < BaseEstimator
     % Principal component analysis (PCA).
     
     properties (GetAccess = 'public', SetAccess = 'public')
@@ -13,13 +13,9 @@ classdef PCA_ < handle
     
     methods
         % constructor
-        function obj = PCA_(parameters)
-            if (nargin > 0) % copy valid parameters
-                for fn = fieldnames(parameters)',
-                    if ismember(fn,fieldnames(obj)),
-                        obj.(fn{1}) = parameters.(fn{1});
-                    end
-                end
+        function obj = PCA_(params)
+            if nargin>0
+                obj.set_params(params)
             end
         end
         

@@ -27,3 +27,5 @@ delete(fullfile(tempdir,'temp.mat'));
 toc(t1)
 
 close all
+
+fprintf('All demos completed.\n')

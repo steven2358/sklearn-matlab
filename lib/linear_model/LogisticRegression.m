@@ -1,4 +1,4 @@
-classdef LogisticRegression < handle
+classdef LogisticRegression < BaseEstimator
     
     properties
         reg = 1E-2; % regularization
@@ -8,13 +8,9 @@ classdef LogisticRegression < handle
     
     methods
         % constructor
-        function obj = LogisticRegression(parameters)
-            if (nargin > 0) % copy valid parameters
-                for fn = fieldnames(parameters)',
-                    if ismember(fn,fieldnames(obj)),
-                        obj.(fn{1}) = parameters.(fn{1});
-                    end
-                end
+        function obj = LogisticRegression(params)
+            if nargin>0
+                obj.set_params(params)
             end
         end
         

@@ -1,4 +1,4 @@
-classdef FunctionTransformer < handle
+classdef FunctionTransformer < BaseEstimator
     % Constructs a transformer from an arbitrary callable.
     %
     % A FunctionTransformer forwards its X (and optionally y) arguments to
@@ -13,13 +13,9 @@ classdef FunctionTransformer < handle
     
     methods
         % constructor
-        function obj = FunctionTransformer(parameters)
-            if (nargin > 0) % copy valid parameters
-                for fn = fieldnames(parameters)',
-                    if ismember(fn,fieldnames(obj)),
-                        obj.(fn{1}) = parameters.(fn{1});
-                    end
-                end
+        function obj = FunctionTransformer(params)
+            if nargin>0
+                obj.set_params(params)
             end
         end
         

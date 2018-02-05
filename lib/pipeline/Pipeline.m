@@ -1,4 +1,4 @@
-classdef Pipeline < handle
+classdef Pipeline < BaseEstimator
     % Pipeline of transforms with a final estimator.
     %
     % Sequentially apply a list of transforms and a final estimator.

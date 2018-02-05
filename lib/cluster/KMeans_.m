@@ -1,4 +1,4 @@
-classdef KMeans_ < handle
+classdef KMeans_ < BaseEstimator
     % The KMeans algorithm clusters data by trying to separate samples in n
     % groups of equal variance, minimizing a criterion known as the inertia
     % or within-cluster sum-of-squares. This algorithm requires the number
@@ -22,13 +22,9 @@ classdef KMeans_ < handle
     
     methods
         % constructor
-        function obj = KMeans_(parameters)
-            if (nargin > 0) % copy valid parameters
-                for fn = fieldnames(parameters)',
-                    if ismember(fn,fieldnames(obj)),
-                        obj.(fn{1}) = parameters.(fn{1});
-                    end
-                end
+        function obj = KMeans_(params)
+            if nargin>0
+                obj.set_params(params)
             end
         end
         
