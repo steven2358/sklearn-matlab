@@ -19,7 +19,7 @@ for i=1:length(allfiles)
     fname_demo = allfiles{i};
     fprintf('\nRunning %s\n',fname_demo);
     eval(fname_demo);
-
+    
     load(fullfile(tempdir,'temp.mat'));
 end
 fprintf('\n')

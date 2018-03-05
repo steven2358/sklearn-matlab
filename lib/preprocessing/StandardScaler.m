@@ -31,6 +31,9 @@ classdef StandardScaler < BaseEstimator
             if obj.with_std
                 obj.var_ = var(X);
                 obj.scale_ = 1./sqrt(obj.var_);
+                
+                % handle scale for zero variance
+                obj.scale_(obj.var_==0) = 1;
             end
         end
         
