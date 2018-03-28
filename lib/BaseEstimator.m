@@ -10,7 +10,7 @@ classdef BaseEstimator < handle
     end
     
     methods
-        % Get parameter names for the estimator
+        % get parameter names for the estimator
         function names = get_param_names(obj)
             names = fieldnames(obj);
         end
