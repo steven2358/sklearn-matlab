@@ -1,4 +1,4 @@
-classdef LinearRegression < BaseEstimator
+classdef LinearRegression < BaseEstimator & RegressorMixin
     % Ordinary least squares Linear Regression.
     
     properties (GetAccess = 'public', SetAccess = 'public')
@@ -29,14 +29,6 @@ classdef LinearRegression < BaseEstimator
         % Predict using the linear model.
         function C = predict(obj,X)
             C = X*obj.coef_ + obj.intercept_;
-        end
-        
-        % Returns the coefficient of determination R^2 of the prediction.
-        function R2 = score(obj,X,y)
-            y_pred = obj.predict(X);
-            u = sum((y-y_pred).^2);
-            v = sum((y-mean(y)).^2);
-            R2 = 1-u/v; % coefficient of determination R^2
         end
     end
 end

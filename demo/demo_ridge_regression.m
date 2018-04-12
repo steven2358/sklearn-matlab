@@ -2,6 +2,7 @@
 
 close all
 clear
+rng('default'); rng(1); % Reproducibility
 
 [X_train, X_test, y_train, y_test] = sklearn_data_noisyplane();
 
@@ -25,8 +26,7 @@ y_pred = clf.predict(X_test);
 f2 = figure; hold all
 plot3(X_test(:,1),X_test(:,2),y_test,'.')
 plot3(X_test(:,1),X_test(:,2),y_pred,'.')
-view([45 45 0])
+view([80 50 30])
 axis equal
 grid on
-title('Test data (3D)')
 legend('true','predicted')

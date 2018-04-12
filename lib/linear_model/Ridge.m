@@ -1,4 +1,4 @@
-classdef Ridge < BaseEstimator
+classdef Ridge < BaseEstimator & RegressorMixin
     % Linear least squares with L2 regularization.
     
     properties (GetAccess = 'public', SetAccess = 'public')
@@ -29,13 +29,6 @@ classdef Ridge < BaseEstimator
         
         function C = predict(obj,X)
             C = X*obj.coef_;
-        end
-        
-        function R2 = score(obj,X,y)
-            y_pred = obj.predict(X);
-            u = sum((y-y_pred).^2);
-            v = sum((y-mean(y)).^2);
-            R2 = 1-u/v; % coefficient of determination R^2
         end
     end
 end
