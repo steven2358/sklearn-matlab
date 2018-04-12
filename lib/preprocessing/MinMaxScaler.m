@@ -30,13 +30,19 @@ classdef MinMaxScaler < BaseEstimator
             obj.data_min_ = min(X,[],1);
             obj.data_max_ = max(X,[],1);
             obj.data_range_ = obj.data_max_ - obj.data_min_;
+           
+            % handle data range for zero variance data
+            obj.data_range_(obj.data_range_==0) = 1;
+                
+            obj.scale_ = bsxfun(@rdivide,diff(obj.feature_range),...
+                obj.data_range_);
         end
         
         % Scaling features of X according to feature_range.
         function X_new = transform(obj,X)
             % scale between 0 and 1
             X_new = bsxfun(@minus,X,obj.data_min_);
-            X_new = bsxfun(@rdivide,X_new,obj.data_max_-obj.data_min_);
+            X_new = bsxfun(@rdivide,X_new,obj.data_range_);
             
             % scale between min and max
             X_new = bsxfun(@times,X_new,diff(obj.feature_range));
