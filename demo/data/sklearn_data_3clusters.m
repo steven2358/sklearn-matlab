@@ -1,4 +1,5 @@
 function [X_train, X_test, y_train, y_test] = sklearn_data_3clusters()
+% Generate a data set containing three clusters.
 
 %% PARAMETERS
 

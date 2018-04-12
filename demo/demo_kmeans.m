@@ -1,4 +1,4 @@
-% KMeans demo on dummy 2D data
+% KMeans demo on dummy 2D data.
 
 close all
 clear

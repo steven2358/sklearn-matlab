@@ -1,4 +1,4 @@
-% Ridge regression demo on dummy data
+% Ridge regression demo on dummy data.
 
 close all
 clear

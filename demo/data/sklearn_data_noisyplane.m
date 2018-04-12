@@ -1,5 +1,6 @@
 function [X_train, X_test, y_train, y_test] = sklearn_data_noisyplane()
-% noisy points on a 2D plane in 3 dimensions
+% Generate a data set containing noisy points on a 2D plane in 3
+% dimensions.
 
 %% PARAMETERS
 

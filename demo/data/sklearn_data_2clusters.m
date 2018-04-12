@@ -1,4 +1,5 @@
 function [X_train, X_test, y_train, y_test] = sklearn_data_2clusters()
+% Generate a data set containing two clusters.
 
 %% PARAMETERS
 
