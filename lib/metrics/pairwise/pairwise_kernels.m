@@ -6,7 +6,8 @@ function K = pairwise_kernels(X, Y, metric, kwds)
 % If the input is a kernel matrix, it is returned instead.
 %
 % This method provides a safe way to take a kernel matrix as input, while
-% preserving compatibility with many other algorithms that take a vector array.
+% preserving compatibility with many other algorithms that take a vector
+% array.
 %
 % If Y is given (default is empty), then the returned matrix is the
 % pairwise kernel between the arrays from both X and Y.
