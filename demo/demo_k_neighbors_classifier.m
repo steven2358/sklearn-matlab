@@ -20,8 +20,6 @@ clf = KNeighborsClassifier(struct('n_neighbors',n_neighbors));
 
 clf.fit(X,y);
 
-% Mdl = fitcknn(X,Y,'NumNeighbors',5,'Standardize',1)
-
 y_pred = clf.predict(X_test);
 
 %% OUTPUT

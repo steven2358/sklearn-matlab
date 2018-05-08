@@ -1,4 +1,4 @@
-classdef KNeighborsClassifier < BaseEstimator & RegressorMixin
+classdef KNeighborsClassifier < BaseEstimator & ClassifierMixin
     % Classifier implementing the k-nearest neighbors vote.
     
     properties (GetAccess = 'public', SetAccess = 'public')
