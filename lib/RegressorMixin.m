@@ -1,5 +1,5 @@
 classdef RegressorMixin < handle
-    % Mixin class for all regression estimators in scikit-learn.
+    % Mixin class for all regression estimators in sklearn-matlab.
     
     properties
         estimator_type = 'regressor';
@@ -33,5 +33,5 @@ classdef RegressorMixin < handle
             y_pred = obj.predict(X);
             R2 = r2_score(y, y_pred, sample_weight);
         end
-    end    
+    end
 end
