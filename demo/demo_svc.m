@@ -36,4 +36,4 @@ ind2 = strcmp(y_train,'virginica');
 plot(X_train(ind1,3),X_train(ind1,4),'.','MarkerSize',16)
 plot(X_train(ind2,3),X_train(ind2,4),'.','MarkerSize',16)
 plot(sv(:,3),sv(:,4),'ko','MarkerSize',10)
-legend('versicolor','setosa','Support Vector')
+legend({'versicolor','setosa','Support Vector'},'Location','best')

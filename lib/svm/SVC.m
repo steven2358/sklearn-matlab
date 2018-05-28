@@ -31,7 +31,11 @@ classdef SVC < BaseEstimator & ClassifierMixin
         
         % Predict using the model
         function C = predict(obj,X)
-            [C,score] = predict(obj.model,X); %#ok<ASGLU>
+            C = predict(obj.model,X);
         end
+        
+        function proba = pred_proba(obj,X)
+            [~,score] = predict(obj.model,X);
+            proba = score(:,2);
     end
 end
