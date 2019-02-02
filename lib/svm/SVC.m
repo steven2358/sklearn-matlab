@@ -37,5 +37,6 @@ classdef SVC < BaseEstimator & ClassifierMixin
         function proba = pred_proba(obj,X)
             [~,score] = predict(obj.model,X);
             proba = score(:,2);
+        end
     end
 end
