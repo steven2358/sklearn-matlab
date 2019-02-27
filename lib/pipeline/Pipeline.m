@@ -16,14 +16,14 @@ classdef Pipeline < BaseEstimator
         num_steps;
     end
     
-    methods        
+    methods
         % constructor
         function obj = Pipeline(estimators)
             if (nargin > 0) % copy valid parameters
                 fn = fieldnames(estimators);
                 obj.num_steps = length(fn);
                 obj.named_steps = cell(obj.num_steps,1);
-                for i=1:obj.num_steps,
+                for i=1:obj.num_steps
                     obj.named_steps{i}.name = fn{i};
                     obj.named_steps{i}.estimator = estimators.(fn{i});
                 end
@@ -40,6 +40,16 @@ classdef Pipeline < BaseEstimator
             obj.named_steps{end}.estimator.fit(X_fit,Y);
         end
         
+        % Apply transforms to the data, and predict with the final
+        % estimator.
+        function C = predict(obj, X)
+            X_fit = X;
+            for i=1:obj.num_steps-1
+                X_fit = obj.named_steps{i}.estimator.transform(X_fit);
+            end
+            C = obj.named_steps{end}.estimator.predict(X_fit);
+        end
+        
         % Applies transforms to the data, and the predict_proba method of
         % the final estimator. Valid only if the final estimator implements
         % predict_proba.
@@ -49,6 +59,6 @@ classdef Pipeline < BaseEstimator
                 X_fit = obj.named_steps{i}.estimator.transform(X_fit);
             end
             proba = obj.named_steps{end}.estimator.predict_proba(X_fit);
-        end        
-    end    
+        end
+    end
 end

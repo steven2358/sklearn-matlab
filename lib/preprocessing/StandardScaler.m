@@ -1,4 +1,4 @@
-classdef StandardScaler < BaseEstimator
+classdef StandardScaler < BaseEstimator & TransformerMixin
     % Standardize features by removing the mean and scaling to unit
     % variance.
     
@@ -46,12 +46,6 @@ classdef StandardScaler < BaseEstimator
             if obj.with_std
                 X_new = bsxfun(@times,X_new,obj.scale_);
             end
-        end
-        
-        % Fit to data, then transform it.
-        function X_new = fit_transform(obj,X,~)
-            obj.fit(X);
-            X_new = obj.transform(X);
         end
         
         % Scale back the data to the original representation

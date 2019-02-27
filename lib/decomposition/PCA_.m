@@ -1,4 +1,4 @@
-classdef PCA_ < BaseEstimator
+classdef PCA_ < BaseEstimator & TransformerMixin
     % Principal component analysis (PCA).
     
     properties (GetAccess = 'public', SetAccess = 'public')
@@ -27,12 +27,6 @@ classdef PCA_ < BaseEstimator
         % Apply the dimensionality reduction on X.
         function X_new = transform(obj,X)
             X_new = X*obj.components;
-        end
-        
-        % Fit the model with X and apply the dimensionality reduction on X.
-        function X_new = fit_transform(obj,X,~)
-            obj.fit(X);
-            X_new = obj.transform(X);
         end
     end
 end

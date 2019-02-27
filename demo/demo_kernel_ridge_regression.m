@@ -20,8 +20,6 @@ noise_var = 0.05; % noise variance
 % noisy sinc function
 my_fun = @(x,noise_var) (sin(3*x)./x + noise_var*randn(size(x)));
 
-% sin(3*x)./x+n;
-
 % kernel
 alpha = 1E4; % regularization constant
 kernel = 'rbf';	% kernel type

@@ -1,4 +1,4 @@
-classdef LabelBinarizer < BaseEstimator
+classdef LabelBinarizer < BaseEstimator & TransformerMixin
     % Binarize labels in a one-vs-all fashion.
     %
     % https://github.com/steven2358/sklearn-matlab
@@ -34,23 +34,16 @@ classdef LabelBinarizer < BaseEstimator
             n_samples = length(X);
             n_features = length(obj.classes_);
             X_new = obj.neg_label*ones(n_samples,n_features);
-            for i=1:n_samples,
+            for i=1:n_samples
                 X_new(i,ismember(obj.classes_,X(i))) = obj.pos_label;
             end
-        end
-        
-        % Fits transformer to X and y with optional parameters fit_params
-        % and returns a transformed version of X.
-        function X_new = fit_transform(obj,X,~)
-            obj.fit(X);
-            X_new = obj.transform(X);
         end
         
         % Transform binary labels back to multi-class labels
         function X_orig = inverse_transform(obj,X)
             n_samples = size(X,1);
             X_orig = zeros(n_samples,1);
-            for i=1:n_samples,
+            for i=1:n_samples
                 X_orig(i) = obj.classes_(ismember(X(i,:),obj.pos_label));
             end
         end

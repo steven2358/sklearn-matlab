@@ -1,4 +1,4 @@
-classdef KMeans_ < BaseEstimator
+classdef KMeans_ < BaseEstimator & TransformerMixin
     % The KMeans algorithm clusters data by trying to separate samples in n
     % groups of equal variance, minimizing a criterion known as the inertia
     % or within-cluster sum-of-squares. This algorithm requires the number
@@ -53,12 +53,6 @@ classdef KMeans_ < BaseEstimator
             labels = obj.predict(X);
         end
         
-        % Compute clustering and transform X to cluster-distance space.
-        function X_new = fit_transform(obj,X,~)
-            obj.fit(X);
-            X_new = obj.transform(X);
-        end
-        
         % Predict the closest cluster each sample in X belongs to.
         function labels = predict(obj,X,~)
             X_new = obj.transform(X);
@@ -68,7 +62,7 @@ classdef KMeans_ < BaseEstimator
         % Transform X to a cluster-distance space. In the new space, each
         % dimension is the distance to the cluster centers.
         function X_new = transform(obj,X,~)
-            X_new = dist2(X,obj.cluster_centers_);
+            X_new = euclidean_distances(X,obj.cluster_centers_,true);
         end
     end
 end

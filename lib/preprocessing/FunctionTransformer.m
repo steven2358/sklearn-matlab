@@ -1,4 +1,4 @@
-classdef FunctionTransformer < BaseEstimator
+classdef FunctionTransformer < BaseEstimator & TransformerMixin
     % Constructs a transformer from an arbitrary callable.
     %
     % A FunctionTransformer forwards its X (and optionally y) arguments to
@@ -20,11 +20,6 @@ classdef FunctionTransformer < BaseEstimator
         end
         
         function fit(obj,X,~) %#ok<INUSD>
-        end
-        
-        function X_new = fit_transform(obj,X,~)
-            obj.fit(X);
-            X_new = obj.transform(X);
         end
         
         function X_new = transform(obj,X)

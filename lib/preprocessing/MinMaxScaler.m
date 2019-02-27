@@ -1,4 +1,4 @@
-classdef MinMaxScaler < BaseEstimator
+classdef MinMaxScaler < BaseEstimator & TransformerMixin
     % Transforms features by scaling each feature to a given range.
     %
     % This estimator scales and translates each feature individually such
@@ -47,12 +47,6 @@ classdef MinMaxScaler < BaseEstimator
             % scale between min and max
             X_new = bsxfun(@times,X_new,diff(obj.feature_range));
             X_new = bsxfun(@plus,X_new,obj.feature_range(1));
-        end
-        
-        % Fit to data, then transform it.
-        function X_new = fit_transform(obj,X,~)
-            obj.fit(X);
-            X_new = obj.transform(X);
         end
         
         % Undo the scaling of X according to feature_range.
