@@ -37,7 +37,7 @@ classdef SelectorMixin < TransformerMixin
         end
     end
     
-    methods (Abstract)
+    methods (Abstract, Access = 'protected')
         get_support_mask(obj);
     end
 end

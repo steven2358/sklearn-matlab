@@ -32,7 +32,7 @@ classdef VarianceThreshold < BaseEstimator & SelectorMixin
         
     end
     
-    methods (Access = 'private')
+    methods (Access = 'protected')
         % Return the feature selection mask
         function mask = get_support_mask(obj)
             mask = obj.variances > obj.threshold;
